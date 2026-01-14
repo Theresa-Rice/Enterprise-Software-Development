@@ -1,0 +1,27 @@
+﻿@page
+@model KaraokePortal.Pages.AboutModel
+
+@{
+    ViewData["Title"] = "About";
+}
+
+<h1>About</h1>
+<!-- Kirsty Chan 232093Z IT3682 -->
+<table class="table-auto w-full border">
+    <thead class="bg-gray-200 font-semibold">
+        <tr>
+            <th class="border px-4 py-2">Join Date</th>
+            <th class="border px-4 py-2">Singers</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.JoinDateGroups)
+        {
+            <tr>
+                <td class="border px-4 py-2">@item.JoinDate.ToString("d/M/yyyy")</td>
+                <td class="border px-4 py-2">@item.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

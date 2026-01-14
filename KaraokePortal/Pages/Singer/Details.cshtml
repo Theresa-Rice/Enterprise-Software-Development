@@ -1,0 +1,50 @@
+﻿@page "{id:guid}"
+
+@model KaraokePortal.Pages.Singer.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+<!-- Kirsty Chan 232093Z IT3682 -->
+<h1 class="text-3xl font-bold mb-4">Details</h1>
+
+<h4 class="text-xl font-semibold">Singer</h4>
+<hr class="my-2" />
+
+<div class="mb-4">
+    <dl class="grid grid-cols-4 gap-x-4 gap-y-2">
+        <dt class="font-semibold">LastName</dt>
+        <dd>@Model.Singer.LastName</dd>
+
+        <dt class="font-semibold">FirstName</dt>
+        <dd>@Model.Singer.FirstName</dd>
+
+        <dt class="font-semibold">JoinDate</dt>
+        <dd>@Model.Singer.JoinDate.ToString("d/M/yyyy")</dd>
+    </dl>
+</div>
+
+<div class="mb-4">
+    <dt class="font-semibold">SongScores</dt>
+    <table class="table-auto w-full border mt-2">
+        <thead class="bg-gray-200 font-semibold">
+            <tr>
+                <th class="border px-4 py-2 text-left">Song Name</th>
+                <th class="border px-4 py-2 text-left">Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var score in Model.Singer.SongScores)
+            {
+                <tr>
+                    <td class="border px-4 py-2">@score.Song.Name</td>
+                    <td class="border px-4 py-2">@score.Score</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="mt-4">
+    <a asp-page="./Edit" asp-route-id="@Model.Singer.SingerID" class="text-blue-600 hover:underline">Edit</a> |
+    <a asp-page="./Index" class="text-blue-600 hover:underline">Back to List</a>
+</div>

@@ -1,0 +1,52 @@
+﻿@page "{id:guid}"
+@model KaraokePortal.Pages.Song.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<!-- Kirsty Chan 232093Z IT3682 -->
+<h1>Details</h1>
+
+<div>
+    <h4>Song</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Song.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Song.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Song.Genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Song.Genre)
+        </dd>
+    </dl>
+</div>
+
+<div class="mb-4">
+    <dt class="font-semibold">SongScores</dt>
+    <table class="table-auto w-full border mt-2">
+        <thead class="bg-gray-200 font-semibold">
+            <tr>
+                <th class="border px-4 py-2 text-left">Song Name</th>
+                <th class="border px-4 py-2 text-left">Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var score in Model.Song.SongScores)
+            {
+                <tr>
+                    <td class="border px-4 py-2">@score.Singer.FirstName @score.Singer.LastName</td>
+                    <td class="border px-4 py-2">@score.Score</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Song.SongID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
